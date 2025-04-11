@@ -20,10 +20,10 @@ return new class extends Migration
             )
             BEGIN
                 SELECT
-                    r.id
-                    ,r.Person_id
-                    ,r.OpeningTime_id
-                    ,r.Lane_id
+                    r.id AS Reservation_id
+                    ,r.Person_id AS ReservationPerson_id
+                    ,r.OpeningTime_id AS ReservationOpeningTime_id
+                    ,r.Lane_id AS ReservationLane_id
                     ,r.ReservationStatus
                     ,r.ReservationNumber
                     ,r.Date
@@ -32,7 +32,7 @@ return new class extends Migration
                     ,r.EndTime
                     ,r.AdultsAmount
                     ,r.ChildrenAmount
-                    ,p.id
+                    ,p.id AS Person_id
                     ,u.Person_id AS UserPerson_id
                 FROM 
                     reservations AS r
