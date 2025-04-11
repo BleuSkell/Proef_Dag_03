@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Person;
+use App\Models\TypePerson;
+use App\Models\Contact;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +14,26 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Create a TypePerson entry if it doesn't exist already
+        $typePerson = TypePerson::firstOrCreate([
+            'id' => 8, // Ensures the TypePerson with id 8 exists
+            'Name' => 'Example Type Person', // Add relevant name or other attributes
+            'IsActief' => true, // ✅ This avoids an error
+            'Opmerking' => 'Example description',
+            'DatumAangemaakt' => now(),
+            'DatumGewijzigd' => now(),
         ]);
+
+        // Seeding the Person table, ensuring that TypePerson_Id is set correctly
+        $persons = Person::factory(10)->create([
+            'TypePerson_Id' => $typePerson->id,  // Linking all persons to the created TypePerson
+        ]);
+
+        // Seeding the Contact table, linking contacts to persons
+        $persons->each(function ($person) {
+            Contact::factory(2)->create([ // Create 2 contacts per person
+                'Person_id' => $person->id
+            ]);
+        });
     }
 }
