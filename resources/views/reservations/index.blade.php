@@ -21,8 +21,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-4 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-row items-center">
-                    <h3 class="mr-4"><strong>Reserveringen van {{ $reservations[0]->FirstName }} {{ $reservations[0]->MiddleName }} {{ $reservations[0]->LastName }}</strong></h3>
-
+                    @if ($reservations)
+                        <h3 class="mr-4"><strong>Reserveringen van {{ $reservations[0]->FirstName }} {{ $reservations[0]->MiddleName }} {{ $reservations[0]->LastName }}</strong></h3>
+                    @endif
+                    
                     <form method="GET" action="{{ route('reservations.index') }}" class="mb-4">
                         <input type="date" name="filter_date" id="filter_date" value="{{ request('filter_date') }}" class="border px-2 py-1">
                         <button type="submit" class="ml-2 bg-blue-500 text-white px-3 py-1 rounded">Toon Reserveringen</button>
