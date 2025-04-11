@@ -17,11 +17,15 @@ class TypePersonFactory extends Factory
     public function definition(): array
     {
         return [
+<<<<<<< HEAD
             'Name' => $this->faker->word,
             'IsActief' => $this->faker->boolean,
             'Opmerking' => $this->faker->sentence,
             'DatumAangemaakt' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'DatumGewijzigd' => $this->faker->dateTimeBetween('-1 year', 'now'),
+=======
+            //
+>>>>>>> feature-ReserveringBeheren
         ];
     }
 }
