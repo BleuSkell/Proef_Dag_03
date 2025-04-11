@@ -18,6 +18,18 @@
                     </div>
 
                     <div class="mb-4">
+                        <label class="block mb-1">Baannummer:</label>
+                        <select name="Lane_id" class="border px-2 py-1 w-full">
+                            @foreach ($lanes as $lane)
+                                <option value="{{ $lane->Id }}" 
+                                    {{ $reservation->ReservationLane_id == $lane->Id ? 'selected' : '' }}>
+                                    {{ $lane->Number }} ({{ $lane->HasFence ? 'Met hekjes' : 'Zonder hekjes' }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
                         <label class="block mb-1">Aantal Volwassenen:</label>
                         <input type="number" name="AdultsAmount" value="{{ $reservation->AdultsAmount }}" class="border px-2 py-1 w-full">
                     </div>

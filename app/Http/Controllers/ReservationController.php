@@ -37,8 +37,11 @@ class ReservationController extends Controller
             abort(404, 'Reservatie niet gevonden');
         }
 
+        // Haal alle lanes op via stored procedure
+        $lanes = DB::select('CALL sp_get_all_lanes()');
+
         // Geef eerste resultaat door aan de view
-        return view('reservations.edit', ['reservation' => $reservation[0]]);
+        return view('reservations.edit', ['reservation' => $reservation[0], 'lanes' => $lanes]);
     }
 
     public function update(Request $request, $id)
@@ -47,13 +50,23 @@ class ReservationController extends Controller
             'Date' => 'required|date',
             'AdultsAmount' => 'required|integer|min:0',
             'ChildrenAmount' => 'required|integer|min:0',
+            'Lane_id' => 'required|integer',
         ]);
 
-        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?, ?)', [
+        // Controleer of de baan geschikt is voor kinderen
+        $lane = DB::select('SELECT HasFence FROM lanes WHERE Id = ?', [$validated['Lane_id']]);
+        if ($validated['ChildrenAmount'] > 0 && !$lane[0]->HasFence) {
+            return redirect()->back()->withErrors([
+                'Lane_id' => 'Deze baan is ongeschikt voor kinderen omdat deze geen hekjes heeft.',
+            ])->withInput();
+        }
+
+        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?, ?, ?)', [
             $id,
             $validated['Date'],
             $validated['AdultsAmount'],
             $validated['ChildrenAmount'],
+            $validated['Lane_id'],
         ]);
 
         return redirect()->route('reservations.index')->with('success', 'Reservatie succesvol bijgewerkt.');
