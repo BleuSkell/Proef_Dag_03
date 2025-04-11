@@ -28,10 +28,19 @@ class ReservationController extends Controller
         return view('reservations.index', ['reservations' => $reservations, 'filterDate' => $filterDate]); // return de view met de reservations en de filter date
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('reservations.edit');
+        // Haal reservatie op via stored procedure
+        $reservation = DB::select('CALL sp_get_reservation_by_id(?)', [$id]);
+
+        if (!$reservation || count($reservation) === 0) {
+            abort(404, 'Reservatie niet gevonden');
+        }
+
+        // Geef eerste resultaat door aan de view
+        return view('reservations.edit', ['reservation' => $reservation[0]]);
     }
+
 
     public function update()
     {
