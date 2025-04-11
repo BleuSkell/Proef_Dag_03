@@ -43,7 +43,7 @@ return new class extends Migration
                     ON u.Person_id = p.id
                 WHERE
                     u.id = user_id
-                    AND r.Date = filter_date;
+                    AND r.Date >= filter_date;
             END
         ');
     }
