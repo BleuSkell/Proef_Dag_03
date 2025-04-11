@@ -19,8 +19,6 @@
                 <thead>
                     <tr>
                         <th class="border px-4 py-2">Reservering ID</th>
-                        <th class="border px-4 py-2">Persoon</th>
-                        <th class="border px-4 py-2">Spel</th>
                         <th class="border px-4 py-2">Punten</th>
                     </tr>
                 </thead>
@@ -28,8 +26,6 @@
                     @foreach($uitslagen as $uitslag)
                         <tr>
                             <td class="border px-4 py-2">{{ $uitslag->reservering->id }}</td>
-                            <td class="border px-4 py-2">{{ $uitslag->persoon->naam }}</td>
-                            <td class="border px-4 py-2">{{ $uitslag->spel->naam }}</td>
                             <td class="border px-4 py-2">{{ $uitslag->aantalpunten }}</td>
                         </tr>
                     @endforeach
