@@ -17,6 +17,7 @@ return new class extends Migration
         DB::unprepared('
             CREATE PROCEDURE sp_get_all_reservations_by_user_id(
                 IN user_id INT
+                ,IN filter_date DATE
             )
             BEGIN
                 SELECT
@@ -41,7 +42,8 @@ return new class extends Migration
                 INNER JOIN users AS u
                     ON u.Person_id = p.id
                 WHERE
-                    u.id = user_id;
+                    u.id = user_id
+                    AND r.Date = filter_date;
             END
         ');
     }
