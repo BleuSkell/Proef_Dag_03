@@ -34,6 +34,10 @@ return new class extends Migration
                     ,r.AdultsAmount
                     ,r.ChildrenAmount
                     ,p.id AS Person_id
+                    ,p.FirstName
+                    ,p.MiddleName
+                    ,p.LastName
+                    ,p.CallName
                     ,u.Person_id AS UserPerson_id
                 FROM 
                     reservations AS r
