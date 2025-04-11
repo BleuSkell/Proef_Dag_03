@@ -27,4 +27,14 @@ class Person extends Model
     {
         return $this->HasOne(TypePeople::class);
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }
