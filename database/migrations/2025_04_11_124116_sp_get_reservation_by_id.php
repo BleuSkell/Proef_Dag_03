@@ -12,12 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared('DROP PROCEDURE IF EXISTS sp_get_all_reservations_by_user_id');
+        DB::unprepared('DROP PROCEDURE IF EXISTS sp_get_reservation_by_id');
 
         DB::unprepared('
-            CREATE PROCEDURE sp_get_all_reservations_by_user_id(
-                IN user_id INT
-                ,IN filter_date DATE
+            CREATE PROCEDURE sp_get_reservation_by_id(
+                IN reservation_id INT
             )
             BEGIN
                 SELECT
@@ -25,29 +24,20 @@ return new class extends Migration
                     ,r.Person_id AS ReservationPerson_id
                     ,r.OpeningTime_id AS ReservationOpeningTime_id
                     ,r.Lane_id AS ReservationLane_id
-                    ,r.ReservationStatus
-                    ,r.ReservationNumber
                     ,r.Date
-                    ,r.TotalHours
-                    ,r.StartTime
-                    ,r.EndTime
                     ,r.AdultsAmount
                     ,r.ChildrenAmount
                     ,p.id AS Person_id
-                    ,p.FirstName
-                    ,p.MiddleName
-                    ,p.LastName
                     ,p.CallName
                     ,u.Person_id AS UserPerson_id
                 FROM 
                     reservations AS r
-                INNER JOIN people AS p 
+                LEFT JOIN people AS p 
                     ON r.Person_id = p.id
-                INNER JOIN users AS u
+                LEFT JOIN users AS u
                     ON u.Person_id = p.id
                 WHERE
-                    u.id = user_id
-                    AND r.Date >= filter_date;
+                    r.id = reservation_id;
             END
         ');
     }
@@ -57,6 +47,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::unprepared('DROP PROCEDURE IF EXISTS sp_get_all_reservations_by_user_id');
+        DB::unprepared('DROP PROCEDURE IF EXISTS sp_get_reservation_by_id');
     }
 };
