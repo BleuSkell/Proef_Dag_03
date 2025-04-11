@@ -9,4 +9,17 @@ class TypePerson extends Model
 {
     /** @use HasFactory<\Database\Factories\TypePersonFactory> */
     use HasFactory;
+
+    protected $table = 'type_people';
+
+    protected $fillable = [
+        'Name',
+        'Is_Active',
+        'Comment',
+    ];
+
+    public function person()
+    {
+        return $this->hasOne(Person::class);
+    }
 }
