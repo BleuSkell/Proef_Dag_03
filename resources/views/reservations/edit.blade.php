@@ -24,11 +24,6 @@
                     @method('PUT')
 
                     <div class="mb-4">
-                        <label class="block mb-1">Datum:</label>
-                        <input type="date" name="Date" value="{{ \Carbon\Carbon::parse($reservation->Date)->format('Y-m-d') }}" class="border px-2 py-1 w-full">
-                    </div>
-
-                    <div class="mb-4">
                         <label class="block mb-1">Baannummer:</label>
                         <select name="Lane_id" class="border px-2 py-1 w-full">
                             @foreach ($lanes as $lane)
@@ -38,16 +33,6 @@
                                 </option>
                             @endforeach
                         </select>
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block mb-1">Aantal Volwassenen:</label>
-                        <input type="number" name="AdultsAmount" value="{{ $reservation->AdultsAmount }}" class="border px-2 py-1 w-full">
-                    </div>
-
-                    <div class="mb-4">
-                        <label class="block mb-1">Aantal Kinderen:</label>
-                        <input type="number" name="ChildrenAmount" value="{{ $reservation->ChildrenAmount }}" class="border px-2 py-1 w-full">
                     </div>
 
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Opslaan</button>

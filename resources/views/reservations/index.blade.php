@@ -39,6 +39,7 @@
                             <th class="border p-2">Eindtijd</th>
                             <th class="border p-2">Aantal Volwassenen</th>
                             <th class="border p-2">Aantal Kinderen</th>
+                            <th class="border p-2">Wijzigen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +52,9 @@
                                 <td class="border p-2">{{ $reservation->EndTime }}</td>
                                 <td class="border p-2">{{ $reservation->AdultsAmount }}</td>
                                 <td class="border p-2">{{ $reservation->ChildrenAmount }}</td>
+                                <td class="border p-2">
+                                    <a href="{{ route('reservations.edit', $reservation->Reservation_id) }}" class="text-blue-500 hover:underline">Bewerken</a>
+                                </td>
                             </tr>
                         @empty
                             <tr>

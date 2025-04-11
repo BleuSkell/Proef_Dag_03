@@ -16,18 +16,12 @@ return new class extends Migration
         DB::unprepared('
             CREATE PROCEDURE sp_update_reservation_by_id(
                 IN reservation_id INT
-                ,IN new_date DATE
-                ,IN new_adults INT
-                ,IN new_children INT
                 ,IN new_lane_id INT
             )
             BEGIN
                 UPDATE reservations
                 SET
-                    Date = new_date
-                    ,AdultsAmount = new_adults
-                    ,ChildrenAmount = new_children
-                    ,Lane_id = new_lane_id
+                    Lane_id = new_lane_id
                 WHERE id = reservation_id;
             END
         ');

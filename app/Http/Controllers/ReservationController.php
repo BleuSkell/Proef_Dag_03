@@ -47,25 +47,24 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'Date' => 'required|date',
-            'AdultsAmount' => 'required|integer|min:0',
-            'ChildrenAmount' => 'required|integer|min:0',
             'Lane_id' => 'required|integer',
         ]);
 
+        // Haal het aantal kinderen op uit de database voor deze reservering
+        $reservation = DB::select('SELECT ChildrenAmount FROM reservations WHERE id = ?', [$id]);
+
+        $childrenAmount = $reservation[0]->ChildrenAmount;
+
         // Controleer of de baan geschikt is voor kinderen
         $lane = DB::select('SELECT HasFence FROM lanes WHERE Id = ?', [$validated['Lane_id']]);
-        if ($validated['ChildrenAmount'] > 0 && !$lane[0]->HasFence) {
+        if ($childrenAmount > 0 && !$lane[0]->HasFence) {
             return redirect()->back()->withErrors([
                 'Lane_id' => 'Deze baan is ongeschikt voor kinderen omdat deze geen hekjes heeft.',
             ])->withInput();
         }
 
-        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?, ?, ?)', [
+        DB::statement('CALL sp_update_reservation_by_id(?, ?)', [
             $id,
-            $validated['Date'],
-            $validated['AdultsAmount'],
-            $validated['ChildrenAmount'],
             $validated['Lane_id'],
         ]);
 
