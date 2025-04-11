@@ -6,5 +6,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::get('/reserveringen', [ReservationController::class, 'index'])->name('reservations.index');
     Route::get('/reserveringen/edit/{id}', [ReservationController::class, 'edit'])->name('reservations.edit');
-    Route::patch('/reserveringen/update/{id}', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::put('/reserveringen/update/{id}', [ReservationController::class, 'update'])->name('reservations.update');
 });

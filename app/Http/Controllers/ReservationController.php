@@ -41,9 +41,21 @@ class ReservationController extends Controller
         return view('reservations.edit', ['reservation' => $reservation[0]]);
     }
 
-
-    public function update()
+    public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'Date' => 'required|date',
+            'AdultsAmount' => 'required|integer|min:0',
+            'ChildrenAmount' => 'required|integer|min:0',
+        ]);
+
+        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?, ?)', [
+            $id,
+            $validated['Date'],
+            $validated['AdultsAmount'],
+            $validated['ChildrenAmount'],
+        ]);
+
+        return redirect()->route('reservations.index')->with('success', 'Reservatie succesvol bijgewerkt.');
     }
 }
