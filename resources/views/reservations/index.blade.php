@@ -5,6 +5,18 @@
         </h2>
     </x-slot>
 
+    <div class="flex justify-center">
+        @if (session('error'))
+            <div class="w-4/5 bg-red-500 text-white p-2 mb-4 mt-4 rounded text-center">
+                {{ session('error') }}
+            </div>
+        @elseif (session('success'))
+            <div class="w-4/5 bg-green-500 text-white p-2 mb-4 mt-4 rounded text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white p-4 overflow-hidden shadow-sm sm:rounded-lg">
