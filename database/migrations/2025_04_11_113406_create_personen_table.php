@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('personen', function (Blueprint $table) {
             $table->id();
+            $table->string('type_persoon');
             $table->string('voornaam');
             $table->string('tussenvoegsel')->nullable();
             $table->string('achternaam');

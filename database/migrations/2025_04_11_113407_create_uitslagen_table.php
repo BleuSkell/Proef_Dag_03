@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('uitslagen', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('spel_id')->constrained('spellen')->onDelete('cascade');
+            $table->unsignedBigInteger('reservering_id'); // <-- dit toevoegen
             $table->integer('aantalpunten')->nullable();
             $table->timestamps();
+        
+            $table->foreign('reservering_id')->references('id')->on('reserveringen')->onDelete('cascade');
         });
+        
         
     }
 

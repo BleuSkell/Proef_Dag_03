@@ -22,10 +22,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PersonenSeeder::class,
-            UitsslagenSeeder::class,
+            UitslagenSeeder::class,
             ReserveringenTableSeeder::class,
-            SpellenTableSeeder::class,
-                                
+            SpellenTableSeeder::class,            
         ]);
     }
 }
