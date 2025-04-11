@@ -21,12 +21,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $mazinPerson = Person::factory()->create([
-            'TypePeople_id' => $typePerson->id,
+            'TypePerson_Id' => $typePerson->id,
             'FirstName' => 'Mazin',
-            'MiddleName' => NULL,
+            'Infix' => NULL,
             'LastName' => 'Jamil',
             'CallName' => 'Mazin',
-            'Is_Adult' => 1,
+            'IsAdult' => 1,
         ]);
 
         $mazinUser = User::factory()->create([
