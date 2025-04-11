@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('IsLoggedIn')->default(0);
             $table->timestamp('LoggedInAt')->nullable();
-            $table->boolean('LoggedOut')->default(0);
+            $table->boolean('LoggedOut')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
         });
