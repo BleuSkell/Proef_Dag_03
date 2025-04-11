@@ -35,7 +35,7 @@ return new class extends Migration
                     ,r.ChildrenAmount
                     ,p.id AS Person_id
                     ,p.FirstName
-                    ,p.MiddleName
+                    ,p.Infix
                     ,p.LastName
                     ,p.CallName
                     ,u.Person_id AS UserPerson_id

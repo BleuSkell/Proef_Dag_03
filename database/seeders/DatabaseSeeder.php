@@ -60,9 +60,5 @@ class DatabaseSeeder extends Seeder
                 'Person_id' => $person->id
             ]);
         });
-        
-        $this->call([
-            ReservationSeeder::class,
-        ]);
     }
 }
