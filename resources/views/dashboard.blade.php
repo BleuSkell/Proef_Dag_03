@@ -10,6 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    
+                    <!-- Button to navigate to the Overzicht Klanten page -->
+                    <a href="{{ route('people.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                        Overzicht Klanten
+                    </a>
                 </div>
             </div>
         </div>
