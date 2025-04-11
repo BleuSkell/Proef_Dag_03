@@ -11,10 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reserveringen', function (Blueprint $table) {
+        Schema::create('personen', function (Blueprint $table) {
             $table->id();
+            $table->string('voornaam');
+            $table->string('tussenvoegsel')->nullable();
+            $table->string('achternaam');
+            $table->boolean('is_volwassen');
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reserveringen');
+        Schema::dropIfExists('personen');
     }
 };

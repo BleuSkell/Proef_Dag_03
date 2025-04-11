@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Persoon extends Model
 {
-    use HasFactory;
-
-    // Relatie
-    public function uitslagen()
-    {
-        return $this->hasMany(Uitslag::class);
-    }
+    public function reserveringen() {
+    return $this->hasMany(Reservering::class);
 }
 
+public function spellen() {
+    return $this->hasMany(Spel::class);
+}
+
+}
