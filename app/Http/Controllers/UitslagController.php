@@ -12,9 +12,9 @@ class UitslagController extends Controller
         $selectedDate = $request->input('date');
 
         if ($selectedDate) {
-            $uitslagen = Uitslag::with(['reservering'])
+            $uitslagen = Uitslag::with(['reservering', 'persoon', 'spel'])
                 ->whereHas('reservering', function ($query) use ($selectedDate) {
-                    $query->whereDate('datum', $selectedDate);
+                    $query->whereDate('created_at', $selectedDate);
                 })
                 ->orderByDesc('aantalpunten')
                 ->get();
