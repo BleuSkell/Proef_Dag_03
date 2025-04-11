@@ -3,15 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Person;
-use App\Models\Contact;
-use App\Models\TypePerson;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class PersonController extends Controller
 {
     public function index(Request $request)
     {
-        return view('people.index');
+        // Haal de geselecteerde datum op of gebruik de huidige datum als standaard
+        $selectedDate = $request->input('date', now()->format('d-m-y'));
+
+        // Query de database en filter op de juiste kolom (DatumAangemaakt)
+        $people = Person::with('contacts')
+            ->when($request->filled('date'), function ($query) use ($selectedDate) {
+                // Zorg ervoor dat je de juiste kolom gebruikt: DatumAangemaakt
+                $query->whereDate('DatumAangemaakt', $selectedDate);
+            })
+            ->orderBy('LastName', 'asc') // Sorteer op achternaam
+            ->get();
+
+        // Controleer of er resultaten zijn voor de geselecteerde datum
+        if ($people->isEmpty()) {
+            $message = "Er is geen informatie beschikbaar voor deze geselecteerde datum.";
+        } else {
+            $message = null; // No message if there are results
+        }
+
+        // Retourneer de view met de gefilterde data
+        return view('people.index', compact('people', 'selectedDate', 'message'));
     }
 
     public function show($id)
