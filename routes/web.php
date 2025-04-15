@@ -1,26 +1,31 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UitslagController; // Zorg dat je de controller importeert
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UitslagController;
+use App\Http\Controllers\ReserveringController;
 
+//  Homepagina = Overzicht reserveringen
+Route::get('/', [ReserveringController::class, 'index'])->name('reserveringen.index');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//  Reservering bewerken
+Route::get('/reservering/{id}/bewerken', [ReserveringController::class, 'edit'])->name('reserveringen.edit');
+Route::post('/reservering/{id}/wijzig', [ReserveringController::class, 'update'])->name('reserveringen.update');
 
+//  Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/uitslagen', [UitslagController::class, 'overzichtUitslagen'])->name('uitslagen.index');
 
-
+//  Alleen voor ingelogde gebruikers
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/uitslagen', [UitslagController::class, 'index'])->name('uitslagen.index');
+
+    // Uitslagen alleen voor ingelogden (indien van toepassing)
+    Route::get('/admin/uitslagen', [UitslagController::class, 'index'])->name('uitslagen.index');
 });
 
 require __DIR__.'/auth.php';

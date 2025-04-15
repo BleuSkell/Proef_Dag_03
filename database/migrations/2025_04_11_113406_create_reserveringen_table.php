@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('reserveringen', function (Blueprint $table) {
             $table->id();
             $table->foreignId('persoon_id')->constrained('personen')->onDelete('cascade');
+            $table->foreignId('pakketoptie_id')->constrained('pakketoptie')->onDelete('cascade');
             $table->date('datum');
+            $table->integer('aantal_volwassenen');
+            $table->integer('aantal_kinderen')->nullable();
             $table->time('begintijd');
             $table->time('eindtijd');
             $table->timestamps();
         });
-        
     }
 
     /**
