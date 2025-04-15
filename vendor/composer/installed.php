@@ -433,7 +433,11 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
+<<<<<<< HEAD
             'reference' => '076301883aa4bd32ae5baa47438cdf7f82bf608f',
+=======
+            'reference' => 'f9fdb4b439fc60a5ea4b6aabaa16d977ca2beeab',
+>>>>>>> feature_reserveringen
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -716,9 +720,15 @@
             'dev_requirement' => true,
         ),
         'phpdocumentor/reflection-docblock' => array(
+<<<<<<< HEAD
             'pretty_version' => '5.6.1',
             'version' => '5.6.1.0',
             'reference' => 'e5e784149a09bd69d9a5e3b01c5cbd2e2bd653d8',
+=======
+            'pretty_version' => '5.6.2',
+            'version' => '5.6.2.0',
+            'reference' => '92dde6a5919e34835c506ac8c523ef095a95ed62',
+>>>>>>> feature_reserveringen
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpdocumentor/reflection-docblock',
             'aliases' => array(),
