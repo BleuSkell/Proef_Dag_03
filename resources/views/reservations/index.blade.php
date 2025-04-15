@@ -22,7 +22,7 @@
             <div class="bg-white p-4 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="flex flex-row items-center">
                     @if ($reservations)
-                        <h3 class="mr-4"><strong>Reserveringen van {{ $reservations[0]->FirstName }} {{ $reservations[0]->MiddleName }} {{ $reservations[0]->LastName }}</strong></h3>
+                        <h3 class="mr-4"><strong>Reserveringen van {{ $reservations[0]->FirstName }} {{ $reservations[0]->Infix }} {{ $reservations[0]->LastName }}</strong></h3>
                     @endif
                     
                     <form method="GET" action="{{ route('reservations.index') }}" class="mb-4">
