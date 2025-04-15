@@ -47,7 +47,7 @@ class Person extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'Person_id');  
+        return $this->hasMany(Reservation::class, 'Person_id', 'id');  
     }
 
     public function user()
@@ -55,8 +55,8 @@ class Person extends Model
         return $this->hasOne(User::class, 'Person_id');  
     }
 
-    public function spel()
+    public function spellen()
     {
-        return $this->hasMany(Spel::class, 'persoon_id');  
+        return $this->hasMany(Spel::class, 'persoon_id', 'id');  
     }
 }

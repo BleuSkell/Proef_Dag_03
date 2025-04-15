@@ -28,9 +28,9 @@
                     <tbody>
                         @foreach($uitslagen as $uitslag)
                             <tr>
-                                <td class="border px-4 py-2">{{ $uitslag->spel->persoon->voornaam }}</td>
+                                <td class="border px-4 py-2">{{ $uitslag->spel->person->FirstName }}</td>
                                 <td class="border px-4 py-2">{{ $uitslag->aantalpunten }}</td>
-                                <td class="border px-4 py-2">{{ $uitslag->spel->reservering->datum }}</td>
+                                <td class="border px-4 py-2">{{ $uitslag->spel->reservation->Date }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -51,9 +51,9 @@
                 <tbody>
                     @foreach($uitslagen as $uitslag)
                         <tr>
-                            <td class="border px-4 py-2">{{ $uitslag->spel->persoon->voornaam }}</td>
+                            <td class="border px-4 py-2">{{ $uitslag->spel->person->FirstName }}</td>
                             <td class="border px-4 py-2">{{ $uitslag->aantalpunten }}</td>
-                            <td class="border px-4 py-2">{{ $uitslag->spel->reservering->datum }}</td>
+                            <td class="border px-4 py-2">{{ $uitslag->spel->reservation->Date }}</td>
                         </tr>
                     @endforeach
                 </tbody>

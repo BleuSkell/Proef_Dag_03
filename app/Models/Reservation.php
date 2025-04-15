@@ -34,26 +34,26 @@ class Reservation extends Model
 
     public function person()
     {
-        return $this->belongsTo(Person::class, 'PersonId');
+        return $this->belongsTo(Person::class, 'Person_Id', 'id');
     }
 
     public function lane()
     {
-        return $this->belongsTo(Lane::class, 'LaneId');
+        return $this->belongsTo(Lane::class, 'Lane_Id');
     }
 
     public function openingTime()
     {
-        return $this->belongsTo(OpeningTime::class, 'OpeningTimeId');
+        return $this->belongsTo(OpeningTime::class, 'OpeningTime_Id');
     }
 
     public function packageOption()
     {
-        return $this->belongsTo(PackageOption::class, 'PackageOptionId');
+        return $this->belongsTo(PackageOption::class, 'PackageOption_Id');
     }
 
-    public function spel()
+    public function spellen()
     {
-        return $this->hasMany(Spel::class, 'reservering_id');
+        return $this->hasMany(Spel::class, 'reservering_id', 'id');
     }
 }

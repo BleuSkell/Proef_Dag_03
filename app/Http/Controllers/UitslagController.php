@@ -12,9 +12,9 @@ class UitslagController extends Controller
         $selectedDate = $request->input('date');
 
         // Haal uitslagen op, filter op datum indien geselecteerd
-        $uitslagen = Uitslag::with(['spel.reservering.persoon'])
+        $uitslagen = Uitslag::with(['spel.reservation.person'])
             ->when($selectedDate, function ($query, $selectedDate) {
-                $query->whereHas('spel.reservering', function ($query) use ($selectedDate) {
+                $query->whereHas('spel.reservation', function ($query) use ($selectedDate) {
                     $query->where('datum', $selectedDate);
                 });
             })
