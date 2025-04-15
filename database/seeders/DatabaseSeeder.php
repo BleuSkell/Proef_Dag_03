@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
     {   
         $typePerson = TypePerson::Factory()->create([
             'Name' => 'Klant',
+            'DatumAangemaakt' => now(),
+            'DatumGewijzigd' => now(),
         ]);
 
         $mazinPerson = Person::factory()->create([
@@ -27,6 +29,17 @@ class DatabaseSeeder extends Seeder
             'LastName' => 'Jamil',
             'CallName' => 'Mazin',
             'IsAdult' => 1,
+            'DatumAangemaakt' => now(),
+            'DatumGewijzigd' => now(),
+        ]);
+
+        $mazinContact = Contact::factory()->create([
+            'Person_id' => $mazinPerson->id,
+            'Mobile' => '0612365478',
+            'E_mail' => 'm.jamil@gmail.com',
+            'IsActief' => 1,
+            'DatumAangemaakt' => now(),
+            'DatumGewijzigd' => now(),
         ]);
 
         $mazinUser = User::factory()->create([
@@ -37,28 +50,8 @@ class DatabaseSeeder extends Seeder
             'IsLoggedIn' => 1,
             'LoggedInAt' => now(),
             'LoggedOut' => NULL,
+            'CreatedAt' => now(),
+            'UpdatedAt' => now(),
         ]);
-
-        // Create a TypePerson entry if it doesn't exist already
-        $typePerson = TypePerson::firstOrCreate([
-            'id' => 8, // Ensures the TypePerson with id 8 exists
-            'Name' => 'Example Type Person', // Add relevant name or other attributes
-            'IsActief' => true, // ✅ This avoids an error
-            'Opmerking' => 'Example description',
-            'DatumAangemaakt' => now(),
-            'DatumGewijzigd' => now(),
-        ]);
-
-        // Seeding the Person table, ensuring that TypePerson_Id is set correctly
-        $persons = Person::factory(10)->create([
-            'TypePerson_Id' => $typePerson->id,  // Linking all persons to the created TypePerson
-        ]);
-
-        // Seeding the Contact table, linking contacts to persons
-        $persons->each(function ($person) {
-            Contact::factory(2)->create([ // Create 2 contacts per person
-                'Person_id' => $person->id
-            ]);
-        });
     }
 }

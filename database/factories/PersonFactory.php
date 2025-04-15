@@ -23,8 +23,8 @@ class PersonFactory extends Factory
             'IsAdult' => $this->faker->boolean,
             'IsActief' => $this->faker->boolean,
             'Opmerking' => $this->faker->sentence,
-            'DatumAangemaakt' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'DatumGewijzigd' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'DatumAangemaakt' => now(),
+            'DatumGewijzigd' => now(),
         ];
     }
 }

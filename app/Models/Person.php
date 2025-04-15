@@ -29,7 +29,9 @@ class Person extends Model
         'Opmerking',
         'DatumAangemaakt',
         'DatumGewijzigd',
-        'TypePerson_Id', // Foreign key to TypePerson
+        'TypePerson_Id',
+        'CreatedAt',
+        'UpdatedAt',
     ];
 
     public function typePerson()

@@ -23,6 +23,8 @@ class TypePerson extends Model
         'Opmerking',
         'DatumAangemaakt',
         'DatumGewijzigd',
+        'CreatedAt',
+        'UpdatedAt',
     ];
 
     public function people()

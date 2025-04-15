@@ -1,13 +1,11 @@
 USE proef_dag_03;
 
 INSERT INTO type_people (Name, IsActief, Opmerking, DatumAangemaakt, DatumGewijzigd)
-VALUES ('Klant', 1, 'Klanten van de bowling center', NOW(), NOW())
-        ,('Medewerker', 1, 'Medewerkers van de bowling center', NOW(), NOW())
+VALUES ('Medewerker', 1, 'Medewerkers van de bowling center', NOW(), NOW())
         ,('Gast', 1, 'Gasten die de website bezoeken', NOW(), NOW());
 
 INSERT INTO people (TypePerson_Id, FirstName, Infix, LastName, CallName, IsAdult, IsActief, Opmerking, DatumAangemaakt, DatumGewijzigd)
-VALUES (1, 'Mazin', null, 'Jamil', 'Mazin', 1, 1, 'Klant van de bowling center', NOW(), NOW())
-        ,(1, 'Arjan', 'de', 'Ruijter', 'Arjan', 1, 1, 'Klant van de bowling center', NOW(), NOW())
+VALUES  (1, 'Arjan', 'de', 'Ruijter', 'Arjan', 1, 1, 'Klant van de bowling center', NOW(), NOW())
         ,(1, 'Hans', null, 'Odijk', 'Hans', 1, 1, 'Klant van de bowling center', NOW(), NOW())
         ,(1, 'Dennis', 'van', 'Wakeren', 'Dennis', 1, 1, 'Klant van de bowling center', NOW(), NOW())
         ,(2, 'Wilco', 'Van de', 'Grift', 'Wilco', 1, 1, 'Medewerker van de bowling center', NOW(), NOW())
@@ -16,15 +14,13 @@ VALUES (1, 'Mazin', null, 'Jamil', 'Mazin', 1, 1, 'Klant van de bowling center',
         ,(3, 'Julian', null, 'Kaldenheuvel', 'Julian', 1, 1, 'Gast van de bowling center', NOW(), NOW());
 
 INSERT INTO contacts (Person_id, Mobile, E_mail, IsActief, Opmerking, DatumAangemaakt, DatumGewijzigd)
-VALUES (1, '0612365478', 'm.jamil@gmail.com', 1, 'Contact gegevens van Mazin', NOW(), NOW())
-        ,(2, '0637264532', 'a.ruijter@gmail.com', 1, 'Contact gegevens van Arjan', NOW(), NOW())
+VALUES  (2, '0637264532', 'a.ruijter@gmail.com', 1, 'Contact gegevens van Arjan', NOW(), NOW())
         ,(3, '0639451238', 'h.odijk@gmail.com', 1, 'Contact gegevens van Hans', NOW(), NOW())
         ,(4, '0693234612', 'd.van.wakeren@gmail.com', 1, 'Contact gegevens van Dennis', NOW(), NOW())
         ,(5, '0693234694', 'w.van.de.grift@gmail.com', 1, 'Contact gegevens van Wilco', NOW(), NOW());
 
 INSERT INTO users (Person_id, name, email, Password, IsLoggedIn, LoggedInAt, LoggedOut, IsActief, Comment, CreatedAt, UpdatedAt)
-VALUES (1, 'mazin', 'm.jamil@gmail.com', '$2y$10$296RMzqzZqWENu9vyh6axed0DkfsuYkbvoI/AXVowCp/DL6zKiF0i', 1, '2209-10-18 13:45:03', NULL, 1, NULL, NOW(), NOW())
-        ,(5, 'wilco', 'w.van.de.grift@gmail.com', '$2y$10$MmF2xYH.woUKV1rGWVKCiuSqRdSQ/qAMO8QCX.mIfAZWv9N68EuK.', 0, '2209-10-18 17:10:12', '2209-10-18 17:20:42', 1, NULL, NOW(), NOW());
+VALUES (5, 'wilco', 'w.van.de.grift@gmail.com', '$2y$10$MmF2xYH.woUKV1rGWVKCiuSqRdSQ/qAMO8QCX.mIfAZWv9N68EuK.', 0, '2209-10-18 17:10:12', '2209-10-18 17:20:42', 1, NULL, NOW(), NOW());
 
 INSERT INTO opening_times (DayName, StartTime, EndTime, Is_Active, Comment, CreatedAt, UpdatedAt)
 VALUES  ('Maandag', '14:00', '22:00', 1, NULL, NOW(), NOW())
