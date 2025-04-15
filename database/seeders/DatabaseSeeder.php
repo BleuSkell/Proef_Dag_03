@@ -18,14 +18,15 @@ class DatabaseSeeder extends Seeder
             User::factory()->create([
                 'name' => 'Test User',
                 'email' => 'test@example.com',
+                'password' => bcrypt('Password123')
             ]);
         }
 
         $this->call([
             PersonenSeeder::class,
-            UitslagenSeeder::class,
             ReserveringenTableSeeder::class,
-            SpellenTableSeeder::class,            
+            SpellenTableSeeder::class, 
+            UitslagenSeeder::class,           
         ]);
     }
 }

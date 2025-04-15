@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Spel;
 
 class Uitslag extends Model
 {
@@ -11,8 +12,8 @@ class Uitslag extends Model
 
     protected $table = 'uitslagen';
 
-    public function reservering()
+    public function spel()
     {
-        return $this->belongsTo(Reservering::class, 'reservering_id', 'id');
+        return $this->belongsTo(Spel::class, 'spel_id', 'id'); // Correct verwijzing naar Spel model
     }
 }

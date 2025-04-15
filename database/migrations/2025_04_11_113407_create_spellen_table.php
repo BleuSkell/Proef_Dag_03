@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('reservering_id')->constrained('reserveringen')->onDelete('cascade');
             $table->timestamps();
         });
-        
     }
 
     /**

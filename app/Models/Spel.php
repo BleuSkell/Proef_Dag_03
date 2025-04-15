@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Persoon;
+use App\Models\Reservering;
+use App\Models\Uitslag;
 
 class Spel extends Model
 {
+    protected $table = 'spellen'; // Zorg ervoor dat de juiste tabelnaam wordt gebruikt
+
     public function persoon() {
         return $this->belongsTo(Persoon::class);
     }
@@ -17,5 +22,4 @@ class Spel extends Model
     public function uitslag() {
         return $this->hasOne(Uitslag::class);
     }
-    
 }
