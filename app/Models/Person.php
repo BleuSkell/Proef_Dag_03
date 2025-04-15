@@ -42,7 +42,7 @@ class Person extends Model
 
     public function contacts()
     {
-        return $this->hasOne(Contact::class, 'Person_id');  
+        return $this->hasMany(Contact::class, 'Person_id');  
     }
 
     public function reservations()
