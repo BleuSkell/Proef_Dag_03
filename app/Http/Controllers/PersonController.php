@@ -11,23 +11,25 @@ class PersonController extends Controller
     public function index(Request $request)
     {
         // Haal de geselecteerde datum op of gebruik de huidige datum als standaard
-        $selectedDate = $request->input('date', now()->format('d-m-y'));
+        $selectedDate = $request->input('date', now()->format('Y-m-d'));
+
+        // Controleer of de geselecteerde datum in de toekomst ligt
+        if ($request->filled('date') && $selectedDate > now()->format('Y-m-d')) {
+            return redirect()->back()->withErrors([
+                'date' => 'Er is geen informatie beschikbaar voor deze geselecteerde datum'
+            ]);
+        }
 
         // Query de database en filter op de juiste kolom (DatumAangemaakt)
         $people = Person::with('contacts')
             ->when($request->filled('date'), function ($query) use ($selectedDate) {
-                // Zorg ervoor dat je de juiste kolom gebruikt: DatumAangemaakt
-                $query->whereDate('DatumAangemaakt', $selectedDate);
+                $query->whereDate('DatumAangemaakt', '<=', $selectedDate);
             })
             ->orderBy('LastName', 'asc') // Sorteer op achternaam
             ->get();
 
         // Controleer of er resultaten zijn voor de geselecteerde datum
-        if ($people->isEmpty()) {
-            $message = "Er is geen informatie beschikbaar voor deze geselecteerde datum.";
-        } else {
-            $message = null; // No message if there are results
-        }
+        $message = $people->isEmpty() ? "Er is geen informatie beschikbaar voor deze geselecteerde datum." : null;
 
         // Retourneer de view met de gefilterde data
         return view('people.index', compact('people', 'selectedDate', 'message'));
