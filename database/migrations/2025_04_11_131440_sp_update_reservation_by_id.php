@@ -17,13 +17,11 @@ return new class extends Migration
             CREATE PROCEDURE sp_update_reservation_by_id(
                 IN reservation_id INT
                 ,IN new_lane_id INT
-                ,IN new_package_option_id INT
             )
             BEGIN
                 UPDATE reservations
                 SET
                     Lane_id = new_lane_id
-                    ,PackageOption_id = new_package_option_id
                 WHERE id = reservation_id;
             END
         ');

@@ -15,6 +15,9 @@ class Reservation extends Model
     /** @use HasFactory<\Database\Factories\ReservationFactory> */
     use HasFactory;
 
+    // Geef aan dat de tabel geen timestamps heeft
+    public $timestamps = false;
+
     protected $table = 'reservations';
 
     protected $fillable = [

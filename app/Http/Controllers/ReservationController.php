@@ -68,11 +68,15 @@ class ReservationController extends Controller
         }
 
         // update de lane via de sp
-        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?)', [
+        DB::statement('CALL sp_update_reservation_by_id(?, ?)', [
             $id,
             $validated['Lane_id'],
-            $validated['PackageOption_id'],
         ]);
+
+        // Update de PackageOption_id met Eloquent
+        $reservationModel = Reservation::findOrFail($id);
+        $reservationModel->PackageOption_id = $validated['PackageOption_id'];
+        $reservationModel->save();
 
         return redirect()->route('reservations.index')->with('success', 'Reservatie succesvol bijgewerkt.');
     }
