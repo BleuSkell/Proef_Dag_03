@@ -15,7 +15,7 @@ class UitslagController extends Controller
         $uitslagen = Uitslag::with(['spel.reservation.person'])
             ->when($selectedDate, function ($query, $selectedDate) {
                 $query->whereHas('spel.reservation', function ($query) use ($selectedDate) {
-                    $query->where('datum', $selectedDate);
+                    $query->where('Date', $selectedDate);
                 });
             })
             ->get();
