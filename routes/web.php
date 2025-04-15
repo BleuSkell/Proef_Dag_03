@@ -5,8 +5,12 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UitslagController;
 use App\Http\Controllers\ReserveringController;
 
-//  Homepagina = Overzicht reserveringen
-Route::get('/', [ReserveringController::class, 'index'])->name('reserveringen.index');
+Route::get('/', function () {
+    return view('welcome');
+});
+
+// Overzicht reserveringen
+Route::get('/reservering', [ReserveringController::class, 'index'])->name('reserveringen.index');
 
 //  Reservering bewerken
 Route::get('/reservering/{id}/bewerken', [ReserveringController::class, 'edit'])->name('reserveringen.edit');
