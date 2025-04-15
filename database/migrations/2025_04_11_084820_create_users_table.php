@@ -16,13 +16,16 @@ return new class extends Migration
             $table->foreignId('Person_id')->constrained('people')->onDelete('cascade');
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('IsLoggedIn')->default(0);
             $table->timestamp('LoggedInAt')->nullable();
             $table->boolean('LoggedOut')->nullable()->default(null);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->timestamps();
+            $table->boolean('IsActief')->default(true); 
+            $table->text('Comment')->nullable();
+            $table->dateTime('CreatedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('UpdatedAt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

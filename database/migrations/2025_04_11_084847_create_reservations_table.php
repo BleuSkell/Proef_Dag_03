@@ -27,7 +27,8 @@ return new class extends Migration
             $table->integer('ChildrenAmount')->nullable()->default(null);
             $table->boolean('Is_Active')->default(0);
             $table->string('Comment')->nullable()->default(null);
-            $table->timestamps();
+            $table->dateTime('CreatedAt')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('UpdatedAt')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 
