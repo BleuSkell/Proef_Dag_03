@@ -8,6 +8,7 @@ use App\Models\Person;
 use App\Models\Lane;
 use App\Models\OpeningTime;
 use App\Models\PackageOption;
+use App\Models\Spel;
 
 class Reservation extends Model
 {
@@ -49,5 +50,10 @@ class Reservation extends Model
     public function packageOption()
     {
         return $this->belongsTo(PackageOption::class, 'PackageOptionId');
+    }
+
+    public function spel()
+    {
+        return $this->hasMany(Spel::class, 'reservering_id');
     }
 }

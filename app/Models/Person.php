@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\TypePerson;
 use App\Models\User;
-
-
+use App\Models\Contact;
+use App\Models\Reservation;
+use App\Models\Spel;
 
 class Person extends Model
 {
@@ -41,6 +42,21 @@ class Person extends Model
 
     public function contacts()
     {
-        return $this->hasMany(Contact::class, 'Person_id');  
+        return $this->hasOne(Contact::class, 'Person_id');  
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'Person_id');  
+    }
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'Person_id');  
+    }
+
+    public function spel()
+    {
+        return $this->hasMany(Spel::class, 'persoon_id');  
     }
 }

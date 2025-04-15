@@ -29,6 +29,6 @@ class TypePerson extends Model
 
     public function people()
     {
-        return $this->hasMany(Person::class, 'TypePerson_Id');  
+        return $this->hasOne(Person::class, 'TypePerson_Id');  
     }
 }
