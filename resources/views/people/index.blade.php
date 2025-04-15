@@ -10,7 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <!-- Date Filter Card -->
+                    <!-- ✅ Foutmelding voor datum -->
+                    @if($errors->has('date'))
+                        <div class="mb-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                            <span class="block sm:inline">{{ $errors->first('date') }}</span>
+                        </div>
+                    @endif
+
+                    <!-- 📅 Datum Filter -->
                     <div class="mb-6 bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-4 bg-gray-50 border-b border-gray-200 font-medium text-sm">
                             Datum Filter
@@ -33,32 +40,32 @@
                         </div>
                     </div>
 
-                    <!-- Date Filter Applied Message -->
+                    <!-- 🔎 Gekozen datum tonen -->
                     @if($selectedDate)
                         <div class="mb-4 bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
-                            <span class="block sm:inline">Geverifieerd op datum: {{ $selectedDate }}</span>
+                            <span class="block sm:inline">Geselecteerde datum: {{ $selectedDate }}</span>
                         </div>
                     @endif
 
-                    <!-- Alerts -->
+                    <!-- ✅ Succesmelding -->
                     @if(session('success'))
                         <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
                             <span class="block sm:inline">{{ session('success') }}</span>
                         </div>
                     @endif
 
-                    <!-- People Table -->
+                    <!-- 👥 Klantenlijst -->
                     @if($people->isNotEmpty())
                         <div class="mt-6 overflow-x-auto">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Naam</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roepnaam</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefoon</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acties</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Naam</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Roepnaam</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Telefoon</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acties</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
@@ -99,6 +106,7 @@
                     @else
                         <p class="mt-4 text-gray-600">{{ $message ?? 'Geen klanten gevonden voor deze datum.' }}</p>
                     @endif
+
                 </div>
             </div>
         </div>
