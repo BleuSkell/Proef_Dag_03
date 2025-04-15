@@ -24,6 +24,7 @@ return new class extends Migration
                     ,r.Person_id AS ReservationPerson_id
                     ,r.OpeningTime_id AS ReservationOpeningTime_id
                     ,r.Lane_id AS ReservationLane_id
+                    ,r.PackageOption_id AS ReservationPackageOption_id
                     ,r.Date
                     ,r.AdultsAmount
                     ,r.ChildrenAmount

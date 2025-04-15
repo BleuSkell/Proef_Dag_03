@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon; // gebruik Carbon om de datums te formatteren
+use App\Models\PackageOption;
+use App\Models\Reservation;
 
 class ReservationController extends Controller
 {
@@ -39,15 +41,17 @@ class ReservationController extends Controller
 
         // Haal alle lanes op via stored procedure
         $lanes = DB::select('CALL sp_get_all_lanes()');
+        $packageOptions = PackageOption::all();
 
         // Geef eerste resultaat door aan de view
-        return view('reservations.edit', ['reservation' => $reservation[0], 'lanes' => $lanes]);
+        return view('reservations.edit', ['reservation' => $reservation[0], 'lanes' => $lanes, 'packageOptions' => $packageOptions]);
     }
 
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'Lane_id' => 'required|integer',
+            'PackageOption_id' => 'required|integer',
         ]);
 
         // Haal het aantal kinderen op uit de database voor deze reservering
@@ -63,9 +67,11 @@ class ReservationController extends Controller
             ])->withInput();
         }
 
-        DB::statement('CALL sp_update_reservation_by_id(?, ?)', [
+        // update de lane via de sp
+        DB::statement('CALL sp_update_reservation_by_id(?, ?, ?)', [
             $id,
             $validated['Lane_id'],
+            $validated['PackageOption_id'],
         ]);
 
         return redirect()->route('reservations.index')->with('success', 'Reservatie succesvol bijgewerkt.');
