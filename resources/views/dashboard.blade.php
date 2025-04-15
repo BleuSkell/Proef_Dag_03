@@ -9,12 +9,24 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+                    {{ __("Welcome!") }}
                     
-                    <!-- Button to navigate to the Overzicht Klanten page -->
-                    <a href="{{ route('people.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
-                        Overzicht Klanten
-                    </a>
+                    <div>
+                        <!-- Button to navigate to the Overzicht Klanten page -->
+                        <a href="{{ route('people.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                            Overzicht Klanten
+                        </a>
+
+                        <!-- Button to navigate to the Overzicht Klanten page -->
+                        <a href="{{ route('uitslagen.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                            Overzicht uitslagen
+                        </a>
+
+                        <!-- Button to navigate to the Overzicht Klanten page -->
+                        <a href="{{ route('reservations.index') }}" class="mt-4 inline-block bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">
+                            Overzicht reserveringen
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
