@@ -67,6 +67,14 @@ class ReservationController extends Controller
             ])->withInput();
         }
 
+        // Controleer of het pakket vrijgezellenfeest is bij aanwezigheid van kinderen
+        $packageOption = PackageOption::find($validated['PackageOption_id']);
+        if ($childrenAmount > 0 && strtolower($packageOption->Name) === 'vrijgezellenfeest') {
+            return redirect()->back()->withErrors([
+                'PackageOption_id' => 'Het optiepakket vrijgezellenfeest is niet bedoeld voor kinderen.',
+            ])->withInput();
+        }
+
         // update de lane via de sp
         DB::statement('CALL sp_update_reservation_by_id(?, ?)', [
             $id,
