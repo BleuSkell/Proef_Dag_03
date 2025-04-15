@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-<<<<<<<< HEAD:database/migrations/2025_04_11_084820_create_users_table.php
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->foreignId('Person_id')->constrained('people')->onDelete('cascade');
@@ -34,9 +33,7 @@ return new class extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
-
-========
->>>>>>>> feature_reserveringen:database/migrations/2025_04_11_115053_create_sessions_table.php
+        
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();

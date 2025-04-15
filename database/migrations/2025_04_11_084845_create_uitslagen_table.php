@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('uitslagen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('spel_id'); // <-- dit toevoegen
+            $table->unsignedBigInteger('spel_id');
             $table->integer('aantalpunten')->nullable();
             $table->timestamps();
         

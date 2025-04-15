@@ -57,3 +57,21 @@ VALUES  (1, 2, 8, 1, 'Bevestigd', '2022122000001', '2022-12-20', 1, '15:00', '16
         ,(1, 2, 6, NULL, 'Bevestigd', '2022122700004', '2022-12-27', 2, '17:00', '19:00', 2, NULL, 1, NULL, NOW(), NOW())
         ,(4, 3, 4, 4, 'Bevestigd', '2022122800005', '2022-12-28', 1, '14:00', '15:00', 3, NULL, 1, NULL, NOW(), NOW())
         ,(5, 10, 5, 4, 'Bevestigd', '2022122800006', '2022-12-28', 2, '19:00', '21:00', 2, NULL, 1, NULL, NOW(), NOW());
+
+INSERT INTO spellen (persoon_id, reservering_id)
+VALUES (1, 1)
+        ,(2, 2)
+        ,(3, 3)
+        ,(4, 5)
+        ,(6, 5)
+        ,(7, 5)
+        ,(8, 5) ;
+
+INSERT INTO uitslagen (spel_id, aantalpunten)
+VALUES (1, 290)
+        ,(2, 300)
+        ,(3, 120)
+        ,(4, 34)
+        ,(5, NULL)
+        ,(6, 234)
+        ,(7, 299);

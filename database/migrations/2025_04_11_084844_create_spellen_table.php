@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('spellen', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persoon_id')->constrained('personen')->onDelete('cascade');
-            $table->foreignId('reservering_id')->constrained('reserveringen')->onDelete('cascade');
+            $table->foreignId('persoon_id')->constrained('people')->onDelete('cascade');
+            $table->foreignId('reservering_id')->constrained('reservations')->onDelete('cascade');
             $table->timestamps();
         });
     }

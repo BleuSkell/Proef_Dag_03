@@ -604,10 +604,8 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
-<<<<<<< HEAD
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
-=======
         'App\\Http\\Controllers\\ReserveringController' => __DIR__ . '/../..' . '/app/Http/Controllers/ReserveringController.php',
         'App\\Http\\Controllers\\UitslagController' => __DIR__ . '/../..' . '/app/Http/Controllers/UitslagController.php',
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
@@ -617,7 +615,6 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Models\\Reservering' => __DIR__ . '/../..' . '/app/Models/Reservering.php',
         'App\\Models\\Spel' => __DIR__ . '/../..' . '/app/Models/Spel.php',
         'App\\Models\\Uitslag' => __DIR__ . '/../..' . '/app/Models/Uitslag.php',
->>>>>>> feature_reserveringen
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
